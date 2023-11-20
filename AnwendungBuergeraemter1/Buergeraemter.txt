@@ -1,0 +1,13 @@
+
+Daten des Buergeramtes
+Name des Buergeramtes:				Bürgeramt Essen Kettwig
+Oeffnungszeiten des Buergera,tes:		8.0 - 16.0
+Strassenhausnummer des Buergeramtes:		Bürgermeister-Fiedler-Platz 1
+Dienstleistungen des Buergeramtes:	Personalausweis-Reisepass
+
+Daten des Buergeramtes
+Name des Buergeramtes:				Waaaah
+Oeffnungszeiten des Buergera,tes:		12.0 - 15.0
+Strassenhausnummer des Buergeramtes:		GraGra 72
+Dienstleistungen des Buergeramtes:	Laesf
+
