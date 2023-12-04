@@ -11,3 +11,18 @@ Oeffnungszeiten des Buergera,tes:		12.0 - 15.0
 Strassenhausnummer des Buergeramtes:		GraGra 72
 Dienstleistungen des Buergeramtes:	Laesf
 
+Test04_12;8.0;19.0;Teststraße 123;
+TestLeistung
+Daten des Buergeramtes
+Name des Buergeramtes:				Test04_12
+Oeffnungszeiten des Buergera,tes:		8.0 - 19.0
+Strassenhausnummer des Buergeramtes:		Teststraße 123
+Dienstleistungen des Buergeramtes:	TestLeistung
+
+
+Daten des Buergeramtes
+Name des Buergeramtes:				Buergeramt Essen Ketwig
+Oeffnungszeiten des Buergera,tes:		8.0 - 16.0
+Strassenhausnummer des Buergeramtes:		Büergermeister-Fiedler-Platz 1
+Dienstleistungen des Buergeramtes:	Personalausweis;Reisepass
+

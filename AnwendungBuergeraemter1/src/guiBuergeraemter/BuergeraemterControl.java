@@ -1,19 +1,21 @@
-package gui;
+package guiBuergeraemter;
 
 import java.io.IOException;
 
 import business.BuergeraemterModel;
 import javafx.stage.Stage;
+import observer.Observer;
 
-public class BuergeraemterControl {
+public class BuergeraemterControl implements Observer{
 	
 	private BuergeraemterView buergeraemterView;
 	private BuergeraemterModel buergeraemterModel;
 
 	public BuergeraemterControl(Stage primaryStage){
-		this.buergeraemterModel = new BuergeraemterModel();
+		this.buergeraemterModel = BuergeraemterModel.getInstance();
 		this.buergeraemterView = new BuergeraemterView(this, primaryStage, 
 				buergeraemterModel);
+		buergeraemterModel.addObserver(this);
 	}
 	
 	void schreibeBuergeraemterInDatei(String typ){
@@ -38,5 +40,10 @@ public class BuergeraemterControl {
 				"Unbekannter Fehler beim Speichern!");
 		}
     }
+
+	public void update() {
+		// TODO Auto-generated method stub
+		buergeraemterView.zeigeBuergeraemterAn();
+	}
 
 }

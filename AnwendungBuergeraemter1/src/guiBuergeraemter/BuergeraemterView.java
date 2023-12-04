@@ -1,4 +1,4 @@
-package gui;
+package guiBuergeraemter;
    
 import business.BuergeraemterModel;
 import business.Buergeramt;
@@ -9,9 +9,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import observer.Observer;
 import ownUtil.*;
 
-public class BuergeraemterView {
+public class BuergeraemterView implements Observer{
 	  
 	private BuergeraemterModel buergeraemterModel;
 	private BuergeraemterControl buergeraemterControl;
@@ -156,7 +157,7 @@ public class BuergeraemterView {
  	    }
    }
   
-   private void zeigeBuergeraemterAn(){
+   public void zeigeBuergeraemterAn(){
 		if(buergeraemterModel.getBuergeramt() != null){
 			txtAnzeige.setText(
    			buergeraemterModel.getBuergeramt()
@@ -181,6 +182,11 @@ public class BuergeraemterView {
    void zeigeFehlermeldungsfensterAn(String meldung){
 	   new MeldungsfensterAnzeiger(AlertType.ERROR,
 			"Fehler", meldung).zeigeMeldungsfensterAn();
+   }
+
+   public void update() {
+	// TODO Auto-generated method stub
+	this.zeigeBuergeraemterAn();
    }
 
 }

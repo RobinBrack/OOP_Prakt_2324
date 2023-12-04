@@ -13,7 +13,7 @@ public class ConcreteCsvProduct extends Product {
 	
 	public ConcreteCsvProduct() {
 		try {
-			aus = new BufferedWriter(new FileWriter("./Buergeraemter.txt",true));
+			aus = new BufferedWriter(new FileWriter("./Buergeraemter.csv",true));
 		} catch(IOException e) {
 			e.printStackTrace();
 		}	
