@@ -26,3 +26,15 @@ Oeffnungszeiten des Buergera,tes:		8.0 - 16.0
 Strassenhausnummer des Buergeramtes:		Büergermeister-Fiedler-Platz 1
 Dienstleistungen des Buergeramtes:	Personalausweis;Reisepass
 
+Daten des Buergeramtes
+Name des Buergeramtes:				Test2024
+Oeffnungszeiten des Buergera,tes:		11.0 - 13.0
+Strassenhausnummer des Buergeramtes:		TestTest 8
+Dienstleistungen des Buergeramtes:	Tester
+
+Daten des Buergeramtes
+Name des Buergeramtes:				PosRoll1
+Oeffnungszeiten des Buergera,tes:		12.0 - 15.0
+Strassenhausnummer des Buergeramtes:		Einfg 0
+Dienstleistungen des Buergeramtes:	PauseUnterbr
+

@@ -22,9 +22,9 @@ public class BuergeraemterView implements Observer{
     private Label lblEingabe    	 		= new Label("Eingabe");
     private Label lblAnzeige   	 	    	= new Label("Anzeige");
     private Label lblName 					= new Label("Name:");
-    private Label lblGeoeffnetVon   		= new Label("Geöffnet von:");
-    private Label lblGeoeffnetBis  	 		= new Label("Geöffnet bis:");
-    private Label lblStrasseHNr   			= new Label("Straße und Hausnummer:");
+    private Label lblGeoeffnetVon   		= new Label("GeÃ¶ffnet von:");
+    private Label lblGeoeffnetBis  	 		= new Label("GeÃ¶ffnet bis:");
+    private Label lblStrasseHNr   			= new Label("StraÃŸe und Hausnummer:");
     private Label lblDienstleistungen  		= new Label("Dienstleistungen:");
     private TextField txtName 	 			= new TextField();
     private TextField txtGeoeffnetVon		= new TextField();
@@ -44,7 +44,7 @@ public class BuergeraemterView implements Observer{
     	Stage primaryStage, BuergeraemterModel buergeraemterModel){
        	Scene scene = new Scene(this.pane, 700, 340);
     	primaryStage.setScene(scene);
-    	primaryStage.setTitle("Verwaltung von Bürgerämtern");
+    	primaryStage.setTitle("Verwaltung von BÃ¼rgerÃ¤mtern");
     	primaryStage.show();
       	this.buergeraemterControl = buergeraemterControl;
     	this.buergeraemterModel = buergeraemterModel;
@@ -120,37 +120,55 @@ public class BuergeraemterView implements Observer{
    }
    
    private void initListener() {
-	    btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
+	   /* btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
         	    nehmeBuergeramtAuf();
             }
-	    });
-	    btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
+	    });*/
+	   
+	   
+	   btnEingabe.setOnAction(
+	    		e-> nehmeBuergeramtAuf());
+	   
+	   /* btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
 	    	public void handle(ActionEvent e) {
 	            zeigeBuergeraemterAn();
 	        } 
-   	    });
-        mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() {
+   	    });*/
+	   
+	   btnAnzeige.setOnAction(
+	    		e -> zeigeBuergeraemterAn());
+	   
+	   
+        /*mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() {
 	    	public void handle(ActionEvent e) {
 	    		schreibeBuergeraemterInDatei("csv");
 	        } 
-        });
-        mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() {
+        });*/
+	   
+	    mnItmCsvExport.setOnAction(
+	    		e-> schreibeBuergeraemterInDatei("csv"));
+	   
+        /*mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() {
 	    	public void handle(ActionEvent e) {
 	    		schreibeBuergeraemterInDatei("txt");
 	        } 
-        });
+        });*/
+	    
+	    mnItmTxtExport.setOnAction(
+	    		e -> schreibeBuergeraemterInDatei("txt"));
+	    
     }
     
    private void nehmeBuergeramtAuf(){
    	try{
-   		buergeraemterModel.setBuergeramt(new Buergeramt(
+   		buergeraemterModel.addBuergeramt(new Buergeramt(
     		txtName.getText(), 
    	        Float.parseFloat(txtGeoeffnetVon.getText()),
    	        Float.parseFloat(txtGeoeffnetBis.getText()),
     		txtStrasseHNr.getText(),
     		txtDienstleistungen.getText().split(";")));
-   		    zeigeInformationsfensterAn("Das Bürgeramt wurde aufgenommen!");
+   		    zeigeInformationsfensterAn("Das BÃ¼rgeramt wurde aufgenommen!");
       	}
    	    catch(Exception exc){
    		    zeigeFehlermeldungsfensterAn(exc.getMessage());
@@ -158,16 +176,19 @@ public class BuergeraemterView implements Observer{
    }
   
    public void zeigeBuergeraemterAn(){
-		if(buergeraemterModel.getBuergeramt() != null){
+		if(buergeraemterModel.getBuergeraemter().size() > 0){
+			StringBuffer text = new StringBuffer();
+			for(Buergeramt bg : buergeraemterModel.getBuergeraemter()) {
+				text.append(bg.gibBuergeramtZurueck(' ')+"\n");			
+			}
 			txtAnzeige.setText(
-   			buergeraemterModel.getBuergeramt()
-			.gibBuergeramtZurueck(' '));
+					text.toString());
 		}
 		else{
 			zeigeInformationsfensterAn( 
-				"Bisher wurde kein Bürgeramt aufgenommen!");
+				"Bisher wurde kein Bï¿½rgeramt aufgenommen!");
 		}
-   }	
+   }
 
    private void schreibeBuergeraemterInDatei(String typ){
 		buergeraemterControl.schreibeBuergeraemterInDatei(typ);

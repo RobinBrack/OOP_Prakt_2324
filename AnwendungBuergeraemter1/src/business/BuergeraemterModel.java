@@ -1,6 +1,8 @@
 package business;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import factory.ConcreteCsvCreator;
@@ -9,12 +11,16 @@ import factory.Creator;
 import factory.Product;
 import guiBuergeraemter.BuergeraemterControl;
 import guiBuergeraemter.BuergeraemterView;
+import javafx.scene.Node;
 import observer.Observable;
 import observer.Observer;
 
 public class BuergeraemterModel implements Observable{
  		
-	private Buergeramt buergeramt;
+	// private Buergeramt buergeramt;
+	
+	private ArrayList<Buergeramt> buergeraemter = new
+			ArrayList<Buergeramt>();
 	
 	
 	private BuergeraemterControl buergeraemterControl;
@@ -40,21 +46,29 @@ public class BuergeraemterModel implements Observable{
 	
 	Vector<Observer> observers = new Vector<Observer>();
 	
-
-	public Buergeramt getBuergeramt() {
-		return this.buergeramt;
-	}
 	
-	public void setBuergeramt(Buergeramt buergeramt) {
-		this.buergeramt = buergeramt;
+	// BuergeramtListe
+	
+	public void addBuergeramt(Buergeramt buergeramt) {
+		buergeraemter.add(buergeramt);
 		notifyObservers();
 	}
+	
+	
+
+	
+	public Object getBuergeramt() {
+		return buergeraemter.get(buergeraemter.size()-1).gibBuergeramtZurueck(';');
+	}
+	
+	
+
  		
 	public void schreibeBuergeraemterInCsvDatei()
 	    throws IOException{
 		Creator writerCreator = new ConcreteCsvCreator();
 		Product writer = writerCreator.factoryMethod();
-		writer.fuegeInDateiHinzu(this.buergeramt);
+		writer.fuegeInDateiHinzu(this.buerger.buergeraemter);
 		writer.schliesseDatei();
  	}
 	
@@ -62,7 +76,7 @@ public class BuergeraemterModel implements Observable{
 		throws IOException{
 		Creator writerCreator = new ConcreteTxtCreator();
 		Product writer = writerCreator.factoryMethod();
-		writer.fuegeInDateiHinzu(this.buergeramt);
+		writer.fuegeInDateiHinzu(this.buerger.buergeraemter);
 		writer.schliesseDatei();
 	}
 
@@ -83,6 +97,11 @@ public class BuergeraemterModel implements Observable{
 			this.observers.elementAt(i).update();
 			}
 
+	}
+
+	public ArrayList<Buergeramt> getBuergeraemter() {
+		// TODO Auto-generated method stub
+		return buergeraemter;
 	}
 	
 

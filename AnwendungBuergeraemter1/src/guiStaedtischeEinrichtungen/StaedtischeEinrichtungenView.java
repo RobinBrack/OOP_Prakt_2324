@@ -22,7 +22,7 @@ public class StaedtischeEinrichtungenView implements Observer {
     	//---Anfang Attribute der grafischen Oberflaeche---
     	private Pane pane = new  Pane();
     	private Label lblAnzeigeBuergeraeamter     
- 		= new Label("Anzeige Bürgerämter");
+ 		= new Label("Anzeige BÃ¼rgerÃ¤mter");
     	private TextArea txtAnzeigeBuergeraeamter  = new TextArea();
     	private Button btnAnzeigeBuergeraeamter = new Button("Anzeige");
     	//-------Ende Attribute der grafischen Oberflaeche-------
@@ -31,7 +31,7 @@ public class StaedtischeEinrichtungenView implements Observer {
     	    	Stage primaryStage, BuergeraemterModel buergeraemterModel){
     		Scene scene = new Scene(this.pane, 560, 340);
     		primaryStage.setScene(scene);
-    		primaryStage.setTitle("Anzeige von städtischen " 
+    		primaryStage.setTitle("Anzeige von stÃ¤dtischen " 
  			+ "Einrichtungen");
     		primaryStage.show();
     		// Hier ergaenzen
@@ -75,15 +75,17 @@ public class StaedtischeEinrichtungenView implements Observer {
     }
    
     void zeigeBuergeraemterAn(){
-    		if(buergeraemterModel.getBuergeramt() != null){
-    			txtAnzeigeBuergeraeamter.setText(
-    				buergeraemterModel.getBuergeramt()
- 				.gibBuergeramtZurueck(' '));
-    		}
-    		else{
-    			zeigeInformationsfensterAn(
- 				"Bisher wurde kein Bürgeramt aufgenommen!");
-    		}
+    	if(buergeraemterModel.getBuergeraemter().size() > 0){
+			StringBuffer text = new StringBuffer();
+			for(Buergeramt bg : buergeraemterModel.getBuergeraemter()) {
+				text.append(bg.gibBuergeramtZurueck(' ')+"\n");			
+			}
+			this.txtAnzeigeBuergeraeamter.setText(text.toString());
+		}
+		else{
+			zeigeInformationsfensterAn( 
+				"Bisher wurde kein Bï¿½rgeramt aufgenommen!");
+		}
     }	
    
     private void zeigeInformationsfensterAn(String meldung){
